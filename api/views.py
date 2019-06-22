@@ -22,9 +22,10 @@ def slack_herbot(request):
 
 @require_http_methods(["POST"])
 def slack_outgoing_webhook(request):
-    received_json_data = json.loads(request.body)
-    text = received_json_data.get('text', '')
+    channel = request.POST.get('channel_name')
+    username = request.POST.get('user_name')
+    text = request.POST.get('text')
 
     return JsonResponse({
-        "text": text
+        "text": "It works!"
     }, json_dumps_params={'ensure_ascii': True})
