@@ -1,8 +1,10 @@
 # Code by ByungWook.Kang @lesimor
-import json
 from slacker import Slacker
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
+from bots.examples.hello import HelloBot
+
+hello_bot = HelloBot()
 
 
 @require_http_methods(["GET"])
@@ -27,5 +29,5 @@ def slack_outgoing_webhook(request):
     text = request.POST.get('text')
 
     return JsonResponse({
-        "text": "It works!"
+        "text": hello_bot.response(text)
     }, json_dumps_params={'ensure_ascii': True})
