@@ -21,6 +21,7 @@
 
 bind = '0.0.0.0:7777'
 backlog = 2048
+reload = True
 
 #
 # Worker processes
